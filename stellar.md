@@ -1,0 +1,3 @@
+a@a:~/stellar$ npx ts-node src/scripts/generate-keypair.ts
+Public Key (Wallet Address): GCECC555WHCMK5MHGEOFF4EDGS2JEBF6DNZGCB5U4UHMWLEP5Q3N2ZNZ
+Secret Key (Keep this safe!): SBXAAEWXWU2GXHVRTWU7CW3G2C3YSRNOR64JZTWK2UXUC6SM57G5XVA5
