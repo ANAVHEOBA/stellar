@@ -62,6 +62,21 @@ const processPaymentValidation = [
         .withMessage('Invalid payment ID')
 ];
 
+// Add validation middleware
+const updateConsumerWalletValidation = [
+    body('consumerWalletAddress')
+        .isString()
+        .notEmpty()
+        .withMessage('Consumer wallet address is required')
+];
+
+const verifyPaymentValidation = [
+    body('transactionId')
+        .isString()
+        .notEmpty()
+        .withMessage('Transaction ID is required')
+];
+
 // Routes
 
 // Create new payment (merchant only)
@@ -119,6 +134,42 @@ router.get(
     validateRequest,
     asyncHandler(async (req, res) => {
         await paymentController.getPaymentStatus(req, res);
+    })
+);
+
+// Public route to access payment by link
+router.get(
+    '/link/:paymentLink',
+    asyncHandler(async (req, res) => {
+        await paymentController.getPaymentByLink(req, res);
+    })
+);
+
+// Add new routes
+router.post(
+    '/:paymentId/verify',
+    verifyPaymentValidation,
+    validateRequest,
+    asyncHandler(async (req, res) => {
+        await paymentController.verifyPayment(req, res);
+    })
+);
+
+router.post(
+    '/:paymentId/consumer-wallet',
+    updateConsumerWalletValidation,
+    validateRequest,
+    asyncHandler(async (req, res) => {
+        await paymentController.updateConsumerWallet(req, res);
+    })
+);
+
+router.get(
+    '/:paymentId/monitor',
+    paymentIdValidation,
+    validateRequest,
+    asyncHandler(async (req, res) => {
+        await paymentController.monitorPayment(req, res);
     })
 );
 

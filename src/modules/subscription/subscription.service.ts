@@ -4,7 +4,7 @@ import { RateCrud } from '../rate/rate.crud';
 import { MerchantCrud } from '../merchant/merchant.crud';
 import { StellarPaymentService } from '../../shared/utils/payment.utils';
 import { ISubscription, SubscriptionStatus } from './subscription.types';
-import { PaymentStatus } from '../payment/payment.types';
+import { PaymentStatus, PaymentType } from '../payment/payment.types';
 import { WebhookService } from './webhook.service';
 
 // Create a simple logger if you don't have one
@@ -60,7 +60,9 @@ export class SubscriptionService {
                 destinationAmount: (parseFloat(subscription.amount) * rate.rate).toFixed(7),
                 destinationAsset: subscription.destinationAsset,
                 exchangeRate: rate.rate,
-                customerEmail: subscription.customerId // Using customerId as email for now
+                consumerEmail: subscription.customerId,
+                type: PaymentType.CRYPTO,
+                status: PaymentStatus.PENDING
             });
 
             // Generate Stellar payment details

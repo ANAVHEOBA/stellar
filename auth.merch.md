@@ -52,7 +52,7 @@ Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U0ODMzMTA0MTAwY2E0
 
 
 
-a@a:~/stellar$ curl -X POST http://localhost:3000/api/rates -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U0ODMzMTA0MTAwY2E0OWQwODk5YzYiLCJ1c2VyVHlwZSI6Im1lcmNoYW50Iiwid2FsbGV0QWRkcmVzcyI6IkdDSjc0U0lHTE5aQklOVEFCVVozUEZWSkZIUk9CWVFaQURJWDJSN0g0SkVPNk9HR1ZJUlBQRFhFIiwiaWF0IjoxNzQzMDI5MDQxLCJleHAiOjE3NDM2MzM4NDF9.cW7wUVClpT_R27qYmSGdPYMDwkRz0Abukrh9XJBVY3o" -H "Content-Type: application/json" -d '{
+a@a:~/stellar$ curl -X POST http://localhost:5000/api/rates -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U0ODMzMTA0MTAwY2E0OWQwODk5YzYiLCJ1c2VyVHlwZSI6Im1lcmNoYW50Iiwid2FsbGV0QWRkcmVzcyI6IkdDSjc0U0lHTE5aQklOVEFCVVozUEZWSkZIUk9CWVFaQURJWDJSN0g0SkVPNk9HR1ZJUlBQRFhFIiwiaWF0IjoxNzQzMDI5MDQxLCJleHAiOjE3NDM2MzM4NDF9.cW7wUVClpT_R27qYmSGdPYMDwkRz0Abukrh9XJBVY3o" -H "Content-Type: application/json" -d '{
     "baseCurrency": "XLM",
     "quoteCurrency": "USD",
     "rate": 0.11,

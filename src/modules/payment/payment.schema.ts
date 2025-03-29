@@ -67,6 +67,19 @@ const paymentSchema = new Schema<IPayment>({
     merchantWalletAddress: {
         type: String,
         required: true
+    },
+    consumerEmail: {
+        type: String,
+        required: true
+    },
+    paymentLink: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    consumerWalletAddress: {
+        type: String,
+        required: false  // Will be filled when consumer connects wallet
     }
 }, {
     timestamps: true
@@ -76,5 +89,6 @@ const paymentSchema = new Schema<IPayment>({
 paymentSchema.index({ merchantId: 1, status: 1 });
 paymentSchema.index({ status: 1, expiresAt: 1 });
 paymentSchema.index({ stellarTransactionId: 1 }, { sparse: true });
+paymentSchema.index({ paymentLink: 1 }, { unique: true });
 
 export const Payment = mongoose.model<IPayment>('Payment', paymentSchema); 

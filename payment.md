@@ -1,12 +1,9 @@
-a@a:~/stellar$ curl -X POST http://localhost:3000/api/payments \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U0ODMzMTA0MTAwY2E0OWQwODk5YzYiLCJ1c2VyVHlwZSI6Im1lcmNoYW50Iiwid2FsbGV0QWRkcmVzcyI6IkdDSjc0U0lHTE5aQklOVEFCVVozUEZWSkZIUk9CWVFaQURJWDJSN0g0SkVPNk9HR1ZJUlBQRFhFIiwiaWF0IjoxNzQzMDI5MDQxLCJleHAiOjE3NDM2MzM4NDF9.cW7wUVClpT_R27qYmSGdPYMDwkRz0Abukrh9XJBVY3o" \
-  -H "Content-Type: application/json" \
-  -d '{
+a@a:~/stellar$ curl -X POST http://localhost:5000/api/payments   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U0ODMzMTA0MTAwY2E0OWQwODk5YzYiLCJ1c2VyVHlwZSI6Im1lcmNoYW50Iiwid2FsbGV0QWRkcmVzcyI6IkdDSjc0U0lHTE5aQklOVEFCVVozUEZWSkZIUk9CWVFaQURJWDJSN0g0SkVPNk9HR1ZJUlBQRFhFIiwiaWF0IjoxNzQzMDI5MDQxLCJleHAiOjE3NDM2MzM4NDF9.cW7wUVClpT_R27qYmSGdPYMDwkRz0Abukrh9XJBVY3o"   -H "Content-Type: application/json"   -d '{
     "rateId": "67e4a1202c13ebf6080ce154",
     "sourceAmount": "1000.00",
-    "customerEmail": "customer@example.com"
+    "customerEmail": "jessicaanavheoba@gmail.com"
   }'
-{"success":true,"data":{"payment":{"merchantId":"67e4833104100ca49d0899c6","rateId":"67e4a1202c13ebf6080ce154","type":"crypto","status":"pending","sourceAmount":"1000.00","sourceAsset":"XLM","destinationAmount":"110.0000000","destinationAsset":"USD","exchangeRate":0.11,"customerEmail":"customer@example.com","expiresAt":"2025-03-27T01:38:34.538Z","_id":"67e4a5127157bc880365c481","createdAt":"2025-03-27T01:08:34.568Z","updatedAt":"2025-03-27T01:08:34.568Z","__v":0}}}a@a:~/stellar$ 
+{"success":true,"data":{"payment":{"merchantId":"67e4833104100ca49d0899c6","rateId":"67e4a1202c13ebf6080ce154","type":"crypto","status":"pending","sourceAmount":"1000.00","sourceAsset":"XLM","destinationAmount":"110.0000000","destinationAsset":"USD","exchangeRate":0.11,"customerEmail":"customer@example.com","expiresAt":"2025-03-28T17:12:45.443Z","stellarPaymentAddress":"GBAIWMSSGA2IGUHLEPAVAN3T4RIYSIMXPUXXIQO3IGE73JM7NZVP36XP","stellarMemo":"e783k8mooet","merchantWalletAddress":"GCJ74SIGLNZBINTABUZ3PFVJFHROBYQZADIX2R7H4JEO6OGGVIRPPDXE","_id":"67e6d18558714ac90828e6bd","createdAt":"2025-03-28T16:42:45.463Z","updatedAt":"2025-03-28T16:42:45.463Z","__v":0},"paymentInstructions":{"address":"GBAIWMSSGA2IGUHLEPAVAN3T4RIYSIMXPUXXIQO3IGE73JM7NZVP36XP","memo":"e783k8mooet","amount":"1000.00","asset":"XLM"}}}a@a:~/stellar$ 
 
 
 

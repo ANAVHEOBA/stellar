@@ -1,5 +1,5 @@
 import { Payment } from './payment.schema';
-import { IPayment, ICreatePayment, PaymentStatus } from './payment.types';
+import { IPayment, ICreatePayment, PaymentStatus, PaymentType } from './payment.types';
 import { Types } from 'mongoose';
 
 export class PaymentCrud {
@@ -17,7 +17,14 @@ export class PaymentCrud {
             destinationAsset: data.destinationAsset,
             exchangeRate: data.exchangeRate,
             customerEmail: data.customerEmail,
-            expiresAt
+            stellarPaymentAddress: data.stellarPaymentAddress,
+            stellarMemo: data.stellarMemo,
+            merchantWalletAddress: data.merchantWalletAddress,
+            type: data.type || PaymentType.CRYPTO,
+            status: data.status || PaymentStatus.PENDING,
+            expiresAt,
+            consumerEmail: data.customerEmail || data.consumerEmail,
+            paymentLink: data.paymentLink
         });
 
         return await payment.save();
@@ -94,6 +101,36 @@ export class PaymentCrud {
             { subscriptionId: new Types.ObjectId(subscriptionId) },
             null,
             { sort: { createdAt: -1 } }
+        );
+    }
+
+    // Add this new method
+    static async getPaymentByLink(paymentLink: string): Promise<IPayment | null> {
+        return await Payment.findOne({ paymentLink });
+    }
+
+    static async updateConsumerWallet(
+        paymentId: string,
+        consumerWalletAddress: string
+    ): Promise<IPayment | null> {
+        return await Payment.findByIdAndUpdate(
+            paymentId,
+            { consumerWalletAddress },
+            { new: true }
+        );
+    }
+
+    static async verifyPayment(
+        paymentId: string,
+        transactionId: string
+    ): Promise<IPayment | null> {
+        return await Payment.findByIdAndUpdate(
+            paymentId,
+            {
+                stellarTransactionId: transactionId,
+                status: PaymentStatus.COMPLETED
+            },
+            { new: true }
         );
     }
 } 

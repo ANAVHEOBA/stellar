@@ -32,6 +32,9 @@ export interface IPayment {
     expiresAt: Date;
     createdAt: Date;
     updatedAt: Date;
+    consumerEmail: string;
+    paymentLink: string;
+    consumerWalletAddress?: string;
 }
 
 export interface ICreatePayment {
@@ -46,4 +49,21 @@ export interface ICreatePayment {
     stellarPaymentAddress?: string;
     stellarMemo?: string;
     merchantWalletAddress: string;
+    type?: PaymentType;
+    status?: PaymentStatus;
+    expiresAt?: Date;
+    consumerEmail: string;
+    paymentLink?: string;
+}
+
+export interface IUpdateConsumerWallet {
+    paymentId: string;
+    consumerWalletAddress: string;
+}
+
+export interface IVerifyPayment {
+    paymentId: string;
+    transactionId: string;
+    amount: string;
+    asset: string;
 } 
